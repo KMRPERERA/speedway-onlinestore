@@ -27,7 +27,7 @@ export default function Offers() {
         <div class="deal_card">
             <div class="action_button">SHOP NOW</div>
             <div class="visual_content suspension_banner">
-               <img src="/images/suspension.jpg" alt="Brake pads, rotors and calipers sale until June 9, 2025" />
+               <img src="/images/Suspension.jpg" alt="Brake pads, rotors and calipers sale until June 9, 2025" />
             </div>
             <div class="product_title">SHOCK ABSORBERS AND STRUTS</div>
         </div>
