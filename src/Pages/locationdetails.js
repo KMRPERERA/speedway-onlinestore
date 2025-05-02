@@ -255,7 +255,7 @@ const LocationDetails = () => {
         {/* Left Side - Car Image */}
         <div className="car-image-container">
           <div className="car-image-wrapper">
-            <img src="/car-image-placeholder.png" alt="Mitsubishi" className="car-image" />
+            {/* <img src="/car-image-placeholder.png" alt="Mitsubishi" className="car-image" /> */}
           </div>
         </div>
 
