@@ -1,0 +1,359 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f3f4f6;
+  }
+  
+  .profile-container-main{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
+  .header {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 160px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .main-nav {
+    margin-left: 48px;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .main-nav li {
+    margin-right: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .welcome-section {
+    margin-right: 24px;
+    text-align: right;
+  }
+  
+  .welcome-text {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .login-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .cart-section {
+    background-color: #f3f4f6;
+    border-radius: 999px;
+    padding: 8px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .cart-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: #22c55e;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  /* Navigation tabs */
+  .nav-tabs {
+    background-color: #b91c1c;
+    color: white;
+  }
+  
+  .tab-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tab-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 16px;
+    cursor: pointer;
+  }
+  
+  /* Main content */
+  .supplier-dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+  
+  .content-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  /* Profile card */
+  .profile-header {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .company-logo {
+    margin-right: 24px;
+  }
+  
+  .company-logo img {
+    width: 96px;
+    height: 96px;
+    background-color: #e5e7eb;
+  }
+  
+  .company-info {
+    flex: 1;
+  }
+  
+  .company-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .company-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+  
+  .verified-badge {
+    background-color: #1f2937;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .company-description {
+    color: #4b5563;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  
+  .company-stats {
+    display: flex;
+    align-items: center;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+  }
+  
+  .stat-icon {
+    margin-right: 4px;
+  }
+  
+  .star-icon {
+    color: #fbbf24;
+  }
+  
+  .stat-value {
+    font-weight: 500;
+  }
+  
+  .profile-actions {
+    margin-top: 16px;
+  }
+  
+  .edit-profile-btn {
+    background-color: #111827;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .edit-profile-btn span {
+    margin-right: 8px;
+  }
+  
+  /* Contact card */
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .contact-item {
+    display: flex;
+  }
+  
+  .contact-icon {
+    width: 24px;
+    margin-right: 16px;
+    color: #6b7280;
+  }
+  
+  .contact-label {
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  .contact-value {
+    color: #4b5563;
+  }
+  
+  /* Orders card */
+  .orders-table-container {
+    overflow-x: auto;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th {
+    text-align: right;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 5.4rem;
+    padding-bottom: 12px;
+  }
+  
+  .orders-table td {
+    padding: 12px 0;
+    font-size: 14px;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .order-id {
+    font-weight: 500;
+    color: #111827;
+  }
+  
+  .status-badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+  }
+  
+  .delivered {
+    background-color: #1f2937;
+  }
+  
+  .shipped {
+    background-color: #1f2937;
+  }
+  
+  .processing {
+    background-color: #4b5563;
+  }
+  
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .pagination-prev,
+  .pagination-next {
+    border: none;
+    background: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .pagination-progress {
+    flex: 1;
+    height: 8px;
+    background-color: #d1d5db;
+    border-radius: 999px;
+    margin: 0 16px;
+    position: relative;
+  }
+  
+  .pagination-indicator {
+    position: absolute;
+    height: 100%;
+    width: 33%;
+    background-color: #b91c1c;
+    border-radius: 999px;
+  }
+  
+  /* Advertisement card */
+  .ad-card {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ad-button {
+    background-color: #b91c1c;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }

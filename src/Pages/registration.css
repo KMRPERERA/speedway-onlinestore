@@ -1,0 +1,310 @@
+/* SpeedwayRegister.css */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f5f5;
+  }
+  
+  .speedway-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Styles */
+  .speedway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .nav-item {
+    margin: 0 15px;
+  }
+  
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .dropdown:after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .welcome-text {
+    font-size: 12px;
+    color: #666;
+    margin-right: 20px;
+    text-align: right;
+  }
+  
+  .auth-links {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .cart-label {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .cart-amount {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-icon {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  
+  .cart-value {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  /* Secondary Navigation */
+  .secondary-nav {
+    background-color: #B22222; /* Deep red color */
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .secondary-nav .container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .secondary-nav .nav-item {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  /* Main Content */
+  .speedway-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .register-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .car-image-container {
+    flex: 1;
+    background-image: url("/public/images/mitsubishi.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: #000;
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+  }
+  
+  .car-image-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: rgba(0,0,0,0.7); */
+    z-index: 1;
+  }
+  
+  .car-image-container:after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    right: -40px;
+    width: 80px;
+    background-color: #e53935; /* Red color for the border */
+    transform: skewX(-5deg);
+    z-index: 2;
+  }
+  
+  .register-form-container {
+    flex: 1;
+    padding: 40px 60px;
+  }
+  
+  .register-title {
+    color: #e53935; /* Red color */
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .register-subtitle {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .register-button {
+    background-color: #e53935; /* Red color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .register-button:hover {
+    background-color: #c62828;
+  }
+  
+  .login-prompt {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-link {
+    color: #e53935; /* Red color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .terms-note {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .terms-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .register-container {
+      flex-direction: column;
+    }
+    
+    .car-image-container {
+      min-height: 300px;
+    }
+    
+    .car-image-container:after {
+      top: auto;
+      bottom: -30px;
+      right: -30px;
+      left: -30px;
+      width: auto;
+      height: 60px;
+      transform: skewY(-5deg);
+    }
+    
+    .register-form-container {
+      padding: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .speedway-header {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .header-left, .header-center, .header-right {
+      margin-bottom: 10px;
+    }
+    
+    .nav-menu {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .secondary-nav .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .secondary-nav .nav-item {
+      margin-bottom: 5px;
+    }
+  }

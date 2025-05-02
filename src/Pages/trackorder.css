@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.trackerContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    /* margin: 20px; */
+    margin-top: 20px;
+    border-radius: 12px;
+    background-color: rgb(224, 224, 224);
+}
+
+.mainHeading {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.instructionBlock {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    line-height: 1.5;
+}
+
+.primaryInstruction {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.secondaryNote {
+    font-size: 18px;
+}
+
+.formFieldset {
+    margin-bottom: 30px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.inputElement {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.helperText {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.exampleFormat {
+    font-weight: bold;
+}
+
+.submitArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.trackButton {
+    background-color: #b92121;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 18px 50px;
+    font-size: 18px;
+    cursor: pointer;
+    min-width: 250px;
+}

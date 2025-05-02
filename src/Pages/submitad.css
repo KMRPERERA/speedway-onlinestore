@@ -1,0 +1,129 @@
+  /* Reset and base styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.advert-creation-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.primary-headline {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.instruction-subtext {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.data-section-headline {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.field-cluster {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-element-label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.mandatory-field-marker {
+    color: #c12020;
+    margin-left: 5px;
+}
+
+.dropdown-select-box {
+    height: 48px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #333;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+}
+
+.text-entry-field {
+    height: 48px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+}
+
+.multiline-text-area {
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.image-upload-boundary {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    cursor: pointer;
+}
+
+.upload-icon-graphic {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    fill: #aaa;
+}
+
+.upload-prompt-text {
+    color: #6c8cd5;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.file-format-instruction {
+    color: #999;
+    font-size: 14px;
+}
+
+.advert-publish-button {
+    background-color: #c12020;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto;
+    width: 250px;
+}
+
+.advert-publish-button:hover {
+    background-color: #a01a1a;
+}

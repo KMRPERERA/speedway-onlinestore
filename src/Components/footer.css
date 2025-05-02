@@ -1,0 +1,471 @@
+/* SpeedWay.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .speedway-container {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Header Styles */
+  .header {
+    width: 100%;
+  }
+  
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: white;
+  }
+  
+  .logo {
+    height: 56px;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .main-nav a {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .main-nav a.active {
+    color: #c12020;
+  }
+  
+  .contact-info {
+    text-align: right;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .bottom-header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #c12020;
+    color: white;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    /* background-image: url("/public/images/mitsubishi.jpg"); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  .search-container {
+    display: flex;
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .search-group {
+    flex: 1;
+  }
+  
+  .search-select, .search-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .search-button {
+    background-color: #c12020;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0 25px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Categories Section */
+  .categories-section {
+    padding: 40px 5%;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .category-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 240px;
+  }
+  
+  .category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .category-overlay h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .shop-now-btn {
+    background-color: #c12020;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Promotions Section */
+  .promotions-section {
+    padding: 30px 5%;
+  }
+  
+  .promotions-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .promotion-banner {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 200px;
+  }
+  
+  .promo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .apply-offers-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #c12020;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Features Section */
+  .features-section {
+    background-color: #f5f5f5;
+    padding: 20px 5%;
+  }
+  
+  .features-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .feature-icon {
+    font-size: 24px;
+  }
+  
+  .feature-text h4 {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .feature-text p {
+    color: #666;
+  }
+  
+  /* Statistics Section */
+  .statistics-section {
+    padding: 40px 5%;
+    text-align: center;
+  }
+  
+  .statistics-section h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+  
+  .stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
+  
+  .stat-box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    width: 150px;
+  }
+  
+  .stat-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .stat-label {
+    color: #666;
+  }
+  
+  /* Supplier Section */
+  .supplier-section {
+    /* background-image: url("/public/images/mitsubishi.jpg"); */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .supplier-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .supplier-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .supplier-content h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .supplier-steps {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  
+  .supplier-steps p {
+    margin-bottom: 10px;
+  }
+  
+  .register-supplier-btn {
+    background-color: #c12020;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: black;
+    color: white;
+    padding: 40px 5% 20px;
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .newsletter-input {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .subscribe-btn {
+    background-color: #5258c0;
+    color: white;
+    border: none;
+    border-radius:0 20px 20px 0;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+  
+  .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  .footer-links ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .top-header {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .bottom-header {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .search-container {
+      flex-direction: column;
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .features-container {
+      flex-direction: column;
+    }
+    
+    .stats-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .footer-top {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }

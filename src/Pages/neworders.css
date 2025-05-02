@@ -1,0 +1,184 @@
+
+    .orderManagementContainer {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .purchaseCard {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #eaeaea;
+    }
+    
+    .purchaseIdentifier {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      color: #222;
+    }
+    
+    .clientName {
+      color: #666;
+      margin: 4px 0 12px;
+      font-size: 16px;
+    }
+    
+    .timeStampWrapper, .locationWrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .iconClock, .iconLocation {
+      margin-right: 8px;
+      color: #888;
+    }
+    
+    .productTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .productTableHeader {
+      text-align: left;
+      padding: 12px 8px;
+      border-bottom: 1px solid #eee;
+      color: #888;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .productItem {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .productDetails {
+      display: flex;
+      align-items: center;
+      padding: 16px 8px;
+    }
+    
+    .productImageContainer {
+      width: 60px;
+      height: 60px;
+      background-color: #f5f5f5;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+    
+    .productName {
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .productCell {
+      padding: 16px 8px;
+      color: #333;
+    }
+    
+    .priceCell {
+      color: #333;
+    }
+    
+    .totalSection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-top: 1px solid #eee;
+    }
+    
+    .finalCost {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .amountValue {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .actionContainer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .processBtn {
+      background-color: white;
+      border: 1px solid #d9d9d9;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .shipBtn {
+      background-color: #1a202c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+    
+    .actionIcon {
+      margin-right: 8px;
+    }
+    
+    .statusBadge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-left: 12px;
+    }
+    
+    .highUrgency {
+      background-color: #fae9e9;
+      color: #b43c3c;
+    }
+    
+    .mediumUrgency {
+      background-color: #fff9e6;
+      color: #a17c22;
+    }
+    
+    .freshOrder {
+      background-color: #1a202c;
+      color: white;
+    }
+    
+    .headerContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .badgeContainer {
+      display: flex;
+      gap: 8px;
+    }

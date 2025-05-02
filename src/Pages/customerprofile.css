@@ -1,0 +1,88 @@
+.profileWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+  }
+  
+  .identityHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .userIconBox {
+    margin-right: 15px;
+    color: #333;
+  }
+  
+  .personalDetGroup {
+    margin-left: 5px;
+  }
+  
+  .sectionTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+  }
+  
+  .subtitleCap {
+    color: #777;
+    margin: 0;
+    font-size: 15px;
+  }
+  
+  .infoFieldName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  
+  .dataEntryBox {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #777;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+  
+  .locationFlex {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .locationCol {
+    flex: 1;
+  }
+  
+  .modifyBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+  }
+  
+  .editDetailsBtn {
+    background-color: #1a202c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .editPencilIcon {
+    margin-right: 10px;
+  }
