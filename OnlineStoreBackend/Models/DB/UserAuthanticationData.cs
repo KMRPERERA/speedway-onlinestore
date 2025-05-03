@@ -159,5 +159,117 @@ namespace OnlineStoreBackend.Models.DB
                 return false;
             }
         }
+
+        public List<SupplierDetails> GetSupplier(string business_email)
+        {
+            List<SupplierDetails> supplierDetails = new List<SupplierDetails>();
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetAllSuppliers", connection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    // Add parameters to the command
+                    cmd.Parameters.AddWithValue("@p_business_email", business_email);
+                    connection.Open();
+
+                    // First result set - Supplier details
+                    SupplierDetails supplier = null;
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read()) // Read the first (and should be only) row
+                        {
+                            supplier = new SupplierDetails
+                            {
+                                supplier_id = reader.GetInt32(reader.GetOrdinal("supplier_id")),
+                                p_supplier_name = reader["supplier_name"].ToString(),
+                                p_primary_contact_person = reader["primary_contact_person"].ToString(),
+                                p_business_email = reader["business_email"].ToString(),
+                                p_business_phone = reader["business_phone"].ToString(),
+                                p_alternative_phone = reader["alternative_phone"].ToString(),
+                                p_business_hours = reader["business_hours"].ToString(),
+                                p_business_name = reader["business_name"].ToString(),
+                                p_business_registration_number = reader["business_registration_number"].ToString(),
+                                p_type_of_business = reader["type_of_business"].ToString(),
+                                p_years_in_business = reader.IsDBNull(reader.GetOrdinal("years_in_business")) ? 0 : reader.GetInt32(reader.GetOrdinal("years_in_business")),
+                                p_business_description = reader["business_description"].ToString(),
+                                p_street_address = reader["street_address"].ToString(),
+                                p_city = reader["city"].ToString(),
+                                p_state = reader["state"].ToString(),
+                                p_postal_code = reader["postal_code"].ToString(),
+                                p_service_area_coverage = reader["service_area_coverage"].ToString(),
+                                p_branch_name = reader["branch_name"].ToString(),
+                                p_branch_address = reader["branch_address"].ToString(),
+                                p_business_logo = reader["business_logo"].ToString(),
+                                p_business_license = reader["business_license"].ToString(),
+                                p_tax_registration_documents = reader["tax_registration_documents"].ToString(),
+                                p_trade_certificates = reader["trade_certificates"].ToString(),
+                                p_brand_dealership_certificates = reader["brand_dealership_certificates"].ToString(),
+                                created_at = reader.IsDBNull(reader.GetOrdinal("created_at")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("created_at"))
+                            };
+                        }
+
+                        // Check if we have more result sets (the orders)
+                        if (reader.NextResult())
+                        {
+                            // Second result set - Order details
+                            while (reader.Read())
+                            {
+                                // Create a new instance for each order with supplier details copied
+                                SupplierDetails orderDetail = new SupplierDetails
+                                {
+                                    // Copy supplier information
+                                    supplier_id = supplier.supplier_id,
+                                    p_supplier_name = supplier.p_supplier_name,
+                                    p_primary_contact_person = supplier.p_primary_contact_person,
+                                    p_business_email = supplier.p_business_email,
+                                    p_business_phone = supplier.p_business_phone,
+                                    p_alternative_phone = supplier.p_alternative_phone,
+                                    p_business_hours = supplier.p_business_hours,
+                                    p_business_name = supplier.p_business_name,
+                                    p_business_registration_number = supplier.p_business_registration_number,
+                                    p_type_of_business = supplier.p_type_of_business,
+                                    p_years_in_business = supplier.p_years_in_business,
+                                    p_business_description = supplier.p_business_description,
+                                    p_street_address = supplier.p_street_address,
+                                    p_city = supplier.p_city,
+                                    p_state = supplier.p_state,
+                                    p_postal_code = supplier.p_postal_code,
+                                    p_service_area_coverage = supplier.p_service_area_coverage,
+                                    p_branch_name = supplier.p_branch_name,
+                                    p_branch_address = supplier.p_branch_address,
+                                    p_business_logo = supplier.p_business_logo,
+                                    p_business_license = supplier.p_business_license,
+                                    p_tax_registration_documents = supplier.p_tax_registration_documents,
+                                    p_trade_certificates = supplier.p_trade_certificates,
+                                    p_brand_dealership_certificates = supplier.p_brand_dealership_certificates,
+                                    created_at = supplier.created_at,
+
+                                    // Add order information
+                                    OrderNumber = reader.GetInt32(reader.GetOrdinal("OrderNumber")),
+                                    PhoneNumber = reader["PhoneNumber"].ToString(),
+                                    OrderQty = reader.GetInt32(reader.GetOrdinal("OrderQty")),
+                                    DeliverDate = reader.IsDBNull(reader.GetOrdinal("DeliverDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("DeliverDate")),
+                                    IsShipped = reader.GetBoolean(reader.GetOrdinal("IsShipped")),
+                                    IsDelivered = reader.GetBoolean(reader.GetOrdinal("IsDelivered")),
+                                    SupplierEmail = reader["SupplierEmail"].ToString(),
+                                    CustomerName = reader["CustomerName"].ToString(),
+                                    ProductID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                                    ProductName = reader["ProductName"].ToString()
+                                };
+
+                                supplierDetails.Add(orderDetail);
+                            }
+                        }
+
+                        // If there were no orders, add just the supplier record
+                        if (supplierDetails.Count == 0 && supplier != null)
+                        {
+                            supplierDetails.Add(supplier);
+                        }
+                    }
+                }
+            }
+            return supplierDetails;
+        }
     }
 }

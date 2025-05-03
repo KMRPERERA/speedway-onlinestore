@@ -71,5 +71,12 @@ namespace OnlineStoreBackend.Controllers
                 return BadRequest(new { success = false, message = "Failed to add supplier" });
             }
         }
+
+        [HttpGet("supplier")]
+        public ActionResult<IEnumerable<SupplierCredentials>> GetSupplier(string business_email)
+        {
+            var users = _userAuthentication.GetSupplier(business_email); // Fixed syntax error
+            return Ok(users);
+        }
     }
 }
