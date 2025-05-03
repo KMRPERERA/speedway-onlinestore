@@ -1,363 +1,125 @@
 /* SpeedwayLogin.css */
 
 /* Reset & Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  body {
-    background-color: #f5f5f5;
-  }
-  
-  .speedway-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Header Styles */
-  .speedway-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .logo {
-    height: 40px;
-    width: auto;
-  }
-  
-  .nav-menu {
-    display: flex;
-    list-style-type: none;
-  }
-  
-  .nav-item {
-    margin: 0 15px;
-  }
-  
-  .nav-link {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .dropdown:after {
-    content: "▼";
-    font-size: 8px;
-    margin-left: 5px;
-    vertical-align: middle;
-  }
-  
-  .header-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .welcome-text {
-    font-size: 12px;
-    color: #666;
-    margin-right: 20px;
-    text-align: right;
-  }
-  
-  .auth-links {
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .cart {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  
-  .cart-label {
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .cart-amount {
-    display: flex;
-    align-items: center;
-  }
-  
-  .cart-icon {
-    margin-right: 5px;
-    font-size: 12px;
-  }
-  
-  .cart-value {
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  /* Secondary Navigation */
-  .secondary-nav {
-    background-color: #B22222; /* Deep red color */
-    color: white;
-    padding: 10px 0;
-  }
-  
-  .secondary-nav .container {
-    display: flex;
-    justify-content: space-around;
-    max-width: 1200px;
-    margin: 0 auto;
-    column-gap: 10rem;
-  }
-  
-  .secondary-nav .nav-item {
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px 10px;
-  }
-  
-  /* Main Content */
-  .speedway-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-  }
-  
-  .login-container {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .car-image-container {
-    flex: 1;
-    /* background-image: url('/images/mitsubishi.jpg'); */
-    background-image: url("/public/images/mitsubishi.jpg");
-    background-size: cover;
-    background-position: center;
-    background-color: #000;
-    position: relative;
-    min-height: 500px;
-    overflow: hidden;
-  }
-  
-  .car-image-container:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* background-color: rgba(0,0,0,0.7); */
-    z-index: 1;
-  }
-  
-  .car-image-container:after {
-    content: "";
-    position: absolute;
-    top: -20px;
-    bottom: -20px;
-    right: -40px;
-    width: 80px;
-    background-color: #e53935; /* Red color for the border */
-    transform: skewX(-5deg);
-    z-index: 2;
-  }
-  
-  .login-form-container {
-    flex: 1;
-    padding: 40px 60px;
-  }
-  
-  .welcome-back {
-    color: #e53935; /* Red color */
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-  
-  .login-subtitle {
-    color: #999;
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .password-input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .toggle-password {
-    position: absolute;
-    right: 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #999;
-  }
-  
-  .select-container {
-    position: relative;
-  }
-  
-  .select-container:after {
-    content: "▼";
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    pointer-events: none;
-  }
-  
-  .select-container select {
-    appearance: none;
-    padding-right: 30px;
-  }
-  
-  .forgot-password {
-    text-align: right;
-    margin-bottom: 20px;
-  }
-  
-  .forgot-password a {
-    color: #999;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .login-button {
-    background-color: #e53935; /* Red color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-bottom: 20px;
-  }
-  
-  .login-button:hover {
-    background-color: #c62828;
-  }
-  
-  .register-prompt {
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .register-link {
-    color: #e53935; /* Red color */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .terms-note {
-    font-size: 12px;
-    color: #999;
-    text-align: center;
-    line-height: 1.5;
-  }
-  
-  .terms-links a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 992px) {
-    .login-container {
-      flex-direction: column;
-    }
-    
-    .car-image-container {
-      min-height: 300px;
-    }
-    
-    .car-image-container:after {
-      top: auto;
-      bottom: -30px;
-      right: -30px;
-      left: -30px;
-      width: auto;
-      height: 60px;
-      transform: skewY(-5deg);
-    }
-    
-    .login-form-container {
-      padding: 30px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .speedway-header {
-      flex-direction: column;
-      padding: 15px;
-    }
-    
-    .header-left, .header-center, .header-right {
-      margin-bottom: 10px;
-    }
-    
-    .nav-menu {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .secondary-nav .container {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .secondary-nav .nav-item {
-      margin-bottom: 5px;
-    }
-  }
 
+/* Header Styles */
+.speedway-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
 
+.logo {
+  height: 40px;
+  width: auto;
+}
 
-  /* Email and Logout Button Alternative Styling */
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.dropdown:after {
+  content: "▼";
+  font-size: 8px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text {
+  font-size: 12px;
+  color: #666;
+  margin-right: 20px;
+  text-align: right;
+}
+
+.auth-links {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+.cart-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.cart-label {
+  font-size: 12px;
+  color: #666;
+}
+
+.cart-amount {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  margin-right: 5px;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+}
+
+.cart-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cart-value {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+  background-color: #B22222; /* Deep red color */
+  color: white;
+  padding: 10px 0;
+}
+
+.secondary-nav .container {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  column-gap: 10rem;
+}
+
+.secondary-nav .nav-item {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Email and Logout Button Alternative Styling */ 
 .auth-links {
   font-size: 14px;
   color: #333;
@@ -376,6 +138,7 @@
   border-radius: 20px;
   border: 1px solid #ddd;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
 .logout-btn {
@@ -393,6 +156,7 @@
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .logout-btn:hover {
@@ -405,4 +169,206 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
+/* Mobile Menu Styles */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 100;
+}
 
+.menu-bar {
+  width: 100%;
+  height: 3px;
+  background-color: #B22222;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .speedway-header-nav {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .header-left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+  }
+  
+  .header-center {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: white;
+    z-index: 99;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    padding-top: 70px;
+  }
+  
+  .header-center.mobile-menu-active {
+    left: 0;
+  }
+  
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20px;
+  }
+  
+  .nav-item {
+    margin: 15px 0;
+    width: 100%;
+  }
+  
+  .nav-link {
+    font-size: 16px;
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .header-right {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: flex-end;
+    order: 3;
+  }
+  
+  .welcome-text {
+    margin-right: 15px;
+  }
+  
+  .secondary-nav {
+    padding: 5px 0;
+  }
+  
+  .secondary-nav .container {
+    flex-direction: column;
+    align-items: center;
+    column-gap: 0;
+    padding: 0 20px;
+  }
+  
+  .secondary-nav .nav-item {
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+    padding: 8px 0;
+  }
+  
+  /* Mobile menu active states */
+  .mobile-menu-active .menu-bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .mobile-menu-active .menu-bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-active .menu-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* Additional mobile adjustments */
+@media (max-width: 480px) {
+  .logo {
+    height: 30px;
+  }
+  
+  .auth-links {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .auth-links span {
+    font-size: 12px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .cart-nav {
+    margin-left: 10px;
+  }
+  
+  .cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .cart-label {
+    font-size: 10px;
+  }
+  
+  .logout-btn {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+}
+
+
+
+/* Additional styles for supplier navbar compatibility */
+.speedway-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure supplier navbar uses the same responsive styles */
+@media (max-width: 768px) {
+  .speedway-header {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* For supplier navbar with more menu items */
+  .header-center .nav-item .nav-link {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Specific adjustments for the supplier navbar */
+  .nav-menu .nav-item .nav-link {
+    font-size: 14px;
+  }
+}

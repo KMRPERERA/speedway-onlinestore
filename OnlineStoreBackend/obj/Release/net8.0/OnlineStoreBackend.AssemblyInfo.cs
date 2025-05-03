@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineStoreBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de65a87eddeda88759348f3cd5efb47551c3a2fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0241c8c2367c4c7a632dfb401d6e86fed22bc734")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineStoreBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineStoreBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -253,8 +253,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Register VehicleItemBusiness with the connection string
-builder.Services.AddScoped<VehicleItemBusiness>(provider =>
-    new VehicleItemBusiness(connectionString));
+builder.Services.AddScoped<MoterpartsData>(provider =>
+    new MoterpartsData(connectionString));
 
 // Register UserAuthenticationData with the corrected class name
 builder.Services.AddScoped<UserAuthanticationData>(provider =>

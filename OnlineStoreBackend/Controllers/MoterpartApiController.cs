@@ -7,21 +7,31 @@ using System.Collections.Generic;
 namespace OnlineStoreBackend.Controllers
 {
     [ApiController]
-    [Route("api/onlinestore")]
+    [Route("api/[controller]")]
     public class MoterpartApiController : ControllerBase
     {
-        private readonly VehicleItemBusiness _vehicleItemBusiness;
+        private readonly MoterpartsData _moterpartdata;
 
-        public MoterpartApiController(VehicleItemBusiness vehicleItemBusiness)
+        public MoterpartApiController(MoterpartsData moterpartdata)
         {
-            _vehicleItemBusiness = vehicleItemBusiness;
+            _moterpartdata = moterpartdata;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Moterparts>> GetVehicleItems()
+
+        [HttpPost("additems")]
+        public ActionResult AddItemsToCart(string ProductCategory, string ProductSubCategory, string Brand, string PartName, string PartDescription, decimal Price, string ImageURL, int StockQty, string SupplierEmail)
         {
-            var vehicleItems = _vehicleItemBusiness.GetVehicleItems();
-            return Ok(vehicleItems);
+            bool addusers = _moterpartdata.AddItemsToCart(ProductCategory, ProductSubCategory,Brand, PartName,PartDescription,Price,ImageURL,StockQty,SupplierEmail); // Fixed syntax error
+            return Ok(addusers);
         }
+
+        [HttpGet("getitems")]
+        public ActionResult<IEnumerable<Moterparts>> GetItemsToCart()
+        {
+            var items= _moterpartdata.GetItemsToCart(); // Fixed syntax error
+            return Ok(items);
+        }
+
+
     }
 }
