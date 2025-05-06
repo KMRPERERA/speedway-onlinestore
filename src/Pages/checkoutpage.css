@@ -1,0 +1,464 @@
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  /* Layout Container */
+  .checkout-cosmos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+  }
+  
+  /* Headings */
+  .heading-jupiter {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #222;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .heading-jupiter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ff3b30;
+  }
+  
+  /* Customer Information Section */
+  .customer-saturn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .notice-mercury {
+    flex: 1;
+    background-color: #f8f9fa;
+    padding: 1.25rem;
+    border-radius: 8px;
+    min-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .notice-mercury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .link-pluto {
+    color: #ff3b30;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .link-pluto:hover {
+    text-decoration: underline;
+    color: #e5352b;
+  }
+  
+  /* Billing Section */
+  .billing-venus {
+    margin-bottom: 3rem;
+  }
+  
+  .form-neptune {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .field-group-uranus {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .field-label-comet {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: #444;
+  }
+  
+  .required-star-galaxy {
+    color: #ff3b30;
+    margin-left: 3px;
+  }
+  
+  /* Form Controls */
+  .field-input-meteor {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .field-input-meteor:focus {
+    outline: none;
+    border-color: #ff3b30;
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+  }
+  
+  .dropdown-mars {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .dropdown-mars:focus {
+    outline: none;
+    border-color: #ff3b30;
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+  }
+  
+  /* Order Summary Section */
+  .summary-lunar {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .summary-header-asteroid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+  }
+  
+  .product-orion {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .product-title-nova {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+    flex: 2;
+  }
+  
+  .product-quantity-nebula {
+    color: #666;
+    font-size: 0.95rem;
+    margin-right: 1rem;
+  }
+  
+  .shipping-europa {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .free-text-io {
+    color: #ff3b30;
+    font-weight: 600;
+  }
+  
+  .total-titan {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  
+  .price-callisto {
+    color: #ff3b30;
+  }
+  
+  /* Payment Section */
+  .payment-phobos {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .payment-option-deimos {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .payment-option-deimos:last-child {
+    border-bottom: none;
+  }
+  
+  .payment-radio-ganymede {
+    margin-top: 0.25rem;
+    cursor: pointer;
+    accent-color: #ff3b30;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .payment-details-triton {
+    flex: 1;
+  }
+  
+  .payment-title-rhea {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .payment-description-tethys {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .payment-logo-dione {
+    width: 80px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Submit Button */
+  .submit-enceladus {
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(255, 59, 48, 0.25);
+  }
+  
+  .submit-enceladus:hover {
+    background-color: #e5352b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 59, 48, 0.3);
+  }
+  
+  .submit-enceladus:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 59, 48, 0.2);
+  }
+  
+  /* Additional Notes Section */
+  .notes-hyperion {
+    margin-top: 3rem;
+  }
+  
+  .textarea-iapetus {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    min-height: 120px;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .textarea-iapetus:focus {
+    outline: none;
+    border-color: #ff3b30;
+    box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.1);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .checkout-cosmos {
+      padding: 1.5rem;
+    }
+    
+    .customer-saturn {
+      flex-direction: column;
+    }
+    
+    .field-group-uranus {
+      min-width: 100%;
+    }
+    
+    .notice-mercury {
+      min-width: 100%;
+    }
+    
+    .heading-jupiter {
+      font-size: 1.75rem;
+    }
+    
+    .summary-lunar, 
+    .payment-phobos {
+      padding: 1.5rem;
+    }
+  }
+
+
+
+
+
+
+
+
+  /* Add these styles to your existing checkoutpage.css file */
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Popup Content */
+  .popup-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: popup-fade-in 0.3s ease-out;
+  }
+  
+  @keyframes popup-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Popup Header */
+  .popup-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .popup-header h2 {
+    margin: 0;
+    color: #4CAF50;
+    font-size: 1.5rem;
+  }
+  
+  .close-button {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close-button:hover {
+    color: #333;
+  }
+  
+  /* Popup Body */
+  .popup-body {
+    padding: 30px;
+    text-align: center;
+  }
+  
+  /* Success Icon */
+  .success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+  }
+  
+  /* Order Number */
+  .order-number {
+    font-size: 2rem;
+    color: #333;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  
+  /* Popup Footer */
+  .popup-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  
+  /* Continue Shopping Button */
+  .continue-shopping-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .continue-shopping-btn:hover {
+    background-color: #45a049;
+  }

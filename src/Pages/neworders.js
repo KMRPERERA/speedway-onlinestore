@@ -1,147 +1,248 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './neworders.css'; // Adjust the path to your CSS file
 import SupplierNavbarComponent from '../Components/supplier-navbar';
+import config from '../environment/config';
 
 export default function Neworders() {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch user data from localStorage when page loads
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const userData = localStorage.getItem('currentUser');
+        if (!userData) {
+          throw new Error('User data not found in localStorage');
+        }
+
+        const user = JSON.parse(userData);
+        const supplierEmail = encodeURIComponent(user.email);
+        
+        const response = await fetch(`${config.apiUrl}/api/MoterpartApi/getneworders?SupplierEmail=${supplierEmail}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setOrders(data);
+        setLoading(false);
+      } catch (err) {
+        console.error('Error fetching orders:', err);
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  // Function to handle shipping status update
+  const handleMarkAsShipped = async (orderNumber) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7037/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=false`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Update the local state to reflect the change
+      setOrders(orders.map(order => 
+        order.orderNumber === orderNumber 
+          ? { ...order, isShipped: true }
+          : order
+      ));
+
+      alert(`Order #${orderNumber} has been marked as shipped!`);
+    } catch (err) {
+      console.error('Error updating shipping status:', err);
+      alert(`Failed to update shipping status: ${err.message}`);
+    }
+  };
+
+  // Function to handle delivery status update
+  const handleMarkAsDelivered = async (orderNumber) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7037/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=true`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Update the local state to reflect the change
+      setOrders(orders.map(order => 
+        order.orderNumber === orderNumber 
+          ? { ...order, isShipped: true, isDelivered: true }
+          : order
+      ));
+
+      alert(`Order #${orderNumber} has been marked as delivered!`);
+    } catch (err) {
+      console.error('Error updating delivery status:', err);
+      alert(`Failed to update delivery status: ${err.message}`);
+    }
+  };
+
+  // Function to format date string
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  };
+
+  if (loading) {
+    return (
+      <div>
+        <SupplierNavbarComponent />
+        <div className="orderManagementContainer">
+          <p>Loading orders...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <SupplierNavbarComponent />
+        <div className="orderManagementContainer">
+          <p>Error loading orders: {error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div><SupplierNavbarComponent/><div><div class="orderManagementContainer">
-    <div class="purchaseCard">
-      <div class="headerContainer">
-        <div>
-          <h2 class="purchaseIdentifier">Order #ORD-2024-001</h2>
-          <p class="clientName">John Smith</p>
-        </div>
-        <div class="badgeContainer">
-          <span class="statusBadge freshOrder">New</span>
-          <span class="statusBadge highUrgency">High Priority</span>
-        </div>
-      </div>
-      
-      <div class="timeStampWrapper">
-        <span class="iconClock">⏱</span>
-        <span>Ordered on 2/23/2024</span>
-      </div>
-      
-      <div class="locationWrapper">
-        <span class="iconLocation">📍</span>
-        <span>123 Main St, City, Country</span>
-      </div>
-      
-      <table class="productTable">
-        <thead>
-          <tr>
-            <th class="productTableHeader">PRODUCT</th>
-            <th class="productTableHeader">QUANTITY</th>
-            <th class="productTableHeader">PRICE</th>
-            <th class="productTableHeader">TOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="productItem">
-            <td class="productDetails">
-              <div class="productImageContainer">
-                <img src="/api/placeholder/60/60" alt="Brake Pad Set" />
+    <div>
+      <SupplierNavbarComponent />
+      <div className="orderManagementContainer">
+        {orders.length === 0 ? (
+          <p>No new orders found</p>
+        ) : (
+          orders.map((order) => (
+            <div className="purchaseCard" key={order.orderNumber}>
+              <div className="headerContainer">
+                <div>
+                  <h2 className="purchaseIdentifier">Order #{order.orderNumber}</h2>
+                  <p className="clientName">{order.customerName}</p>
+                </div>
+                <div className="badgeContainer">
+                  <span className="statusBadge freshOrder">New</span>
+                  <span className="statusBadge highUrgency">
+                    {order.isShipped ? (order.isDelivered ? "Delivered" : "Shipped") : "Pending"}
+                  </span>
+                </div>
               </div>
-              <span class="productName">Brake Pad Set</span>
-            </td>
-            <td class="productCell">2</td>
-            <td class="productCell priceCell">$89.99</td>
-            <td class="productCell priceCell">$179.98</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="totalSection">
-        <span class="finalCost">Total Order Amount:</span>
-        <span class="amountValue">$179.98</span>
-      </div>
-      
-      <div class="actionContainer">
-        <button class="processBtn">
-          <span class="actionIcon">📦</span>
-          Process Order
-        </button>
-        <button class="shipBtn">
-          <span class="actionIcon">✓</span>
-          Mark as Shipped
-        </button>
+
+              <div className="timeStampWrapper">
+                <span className="iconClock">⏱</span>
+                <span>Delivery Date: {formatDate(order.deliverDate)}</span>
+              </div>
+
+              <div className="locationWrapper">
+                <span className="iconLocation">📍</span>
+                <span>{order.customerAddress}</span>
+              </div>
+
+              <div className="contactWrapper">
+                <span className="iconContact">📞</span>
+                <span>{order.phoneNumber}</span>
+              </div>
+
+              <div className="contactWrapper">
+                <span className="iconContact">✉️</span>
+                <span>{order.customerEmail}</span>
+              </div>
+
+              <div className="table-responsive">
+                <table className="productTable">
+                  <thead>
+                    <tr>
+                      <th className="productTableHeader">PRODUCT ID</th>
+                      <th className="productTableHeader">QUANTITY</th>
+                      <th className="productTableHeader">PRICE</th>
+                      <th className="productTableHeader">TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="productItem">
+                      <td className="productDetails">
+                        <div className="productImageContainer">
+                          <img 
+                            src={order.imageURL || `/images/product_${order.productID}.jpg`} 
+                            alt={`Product ${order.productID}`} 
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "/api/placeholder/60/60";
+                            }}
+                          />
+                        </div>
+                        <span className="productName">Product ID: {order.productID}</span>
+                      </td>
+                      <td className="productCell">{order.orderQty}</td>
+                      <td className="productCell priceCell">
+                        ${order.orderQty > 0 ? (Number(order.orderPrice) / order.orderQty).toFixed(2) : '0.00'}
+                      </td>
+                      <td className="productCell priceCell">${Number(order.orderPrice).toFixed(2)}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="totalSection">
+                <span className="finalCost">Total Order Amount:</span>
+                <span className="amountValue">${Number(order.orderPrice).toFixed(2)}</span>
+              </div>
+
+              <div className="actionContainer">
+                <button className="processBtn">
+                  <span className="actionIcon">📦</span>
+                  Process Order
+                </button>
+                <button 
+                  className="shipBtn" 
+                  onClick={() => handleMarkAsShipped(order.orderNumber)}
+                  disabled={order.isShipped}
+                >
+                  <span className="actionIcon">✓</span>
+                  Mark as Shipped
+                </button>
+                <button 
+                  className="shipBtn" 
+                  onClick={() => handleMarkAsDelivered(order.orderNumber)}
+                  disabled={order.isDelivered}
+                >
+                  <span className="actionIcon">✓</span>
+                  Mark as Delivered
+                </button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
-    
-    <div class="purchaseCard">
-      <div class="headerContainer">
-        <div>
-          <h2 class="purchaseIdentifier">Order #ORD-2024-002</h2>
-          <p class="clientName">Sarah Johnson</p>
-        </div>
-        <div class="badgeContainer">
-          <span class="statusBadge freshOrder">New</span>
-          <span class="statusBadge mediumUrgency">Medium Priority</span>
-        </div>
-      </div>
-      
-      <div class="timeStampWrapper">
-        <span class="iconClock">⏱</span>
-        <span>Ordered on 2/23/2024</span>
-      </div>
-      
-      <div class="locationWrapper">
-        <span class="iconLocation">📍</span>
-        <span>456 Oak Ave, Town, Country</span>
-      </div>
-      
-      <table class="productTable">
-        <thead>
-          <tr>
-            <th class="productTableHeader">PRODUCT</th>
-            <th class="productTableHeader">QUANTITY</th>
-            <th class="productTableHeader">PRICE</th>
-            <th class="productTableHeader">TOTAL</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="productItem">
-            <td class="productDetails">
-              <div class="productImageContainer">
-                <img src="/api/placeholder/60/60" alt="Oil Filter" />
-              </div>
-              <span class="productName">Oil Filter</span>
-            </td>
-            <td class="productCell">1</td>
-            <td class="productCell priceCell">$15.99</td>
-            <td class="productCell priceCell">$15.99</td>
-          </tr>
-          <tr class="productItem">
-            <td class="productDetails">
-              <div class="productImageContainer">
-                <img src="/api/placeholder/60/60" alt="Engine Oil 5W-30" />
-              </div>
-              <span class="productName">Engine Oil 5W-30</span>
-            </td>
-            <td class="productCell">5</td>
-            <td class="productCell priceCell">$45.99</td>
-            <td class="productCell priceCell">$229.95</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="totalSection">
-        <span class="finalCost">Total Order Amount:</span>
-        <span class="amountValue">$245.94</span>
-      </div>
-      
-      <div class="actionContainer">
-        <button class="processBtn">
-          <span class="actionIcon">📦</span>
-          Process Order
-        </button>
-        <button class="shipBtn">
-          <span class="actionIcon">✓</span>
-          Mark as Shipped
-        </button>
-      </div>
-    </div>
-  </div></div></div>
-  )
+  );
 }

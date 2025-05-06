@@ -1,362 +1,475 @@
-/* SpeedWay.css */
+/* SpeedWay.css with Enhanced Mobile Responsiveness */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  .speedway-container {
-    width: 100%;
-    /* min-width:1200px; */
-    min-height: 100vh;
-    background-color: #ffffff;
-  }
-  
-  /* Header Styles */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-  
-  .logo {
-    height: 40px;
-  }
-  
-  .main-nav ul {
-    display: flex;
-    list-style: none;
-  }
-  
-  .main-nav li {
-    margin: 0 15px;
-  }
-  
-  .main-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .dropdown::after {
-    content: "▼";
-    font-size: 8px;
-    margin-left: 5px;
-    vertical-align: middle;
-  }
-  
-  .user-actions {
-    display: flex;
-    align-items: center;
-  }
-  
-  .welcome {
-    font-size: 12px;
-    margin-right: 10px;
-  }
-  
-  .auth-links {
-    font-size: 12px;
-    margin-right: 20px;
-  }
-  
-  .cart {
-    display: flex;
-    align-items: center;
-    background-color: #f8f8f8;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .cart-icon {
-    font-size: 16px;
-    margin-right: 5px;
-    color: #4CAF50;
-  }
-  
-  .cart-amount {
-    font-weight: bold;
-  }
-  
-  /* Secondary Navigation */
-  .secondary-nav {
-    display: flex;
-    justify-content: space-between;
-    background-color: #b22222;
-    color: white;
-    padding: 0 40px;
-  }
-  
-  .nav-item {
-    padding: 15px 20px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  /* Main Content */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.speedway-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  height: 40px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-nav li {
+  margin: 0 15px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.dropdown::after {
+  content: "▼";
+  font-size: 8px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.welcome {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.auth-links {
+  font-size: 12px;
+  margin-right: 20px;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.cart-icon {
+  font-size: 16px;
+  margin-right: 5px;
+  color: #4CAF50;
+}
+
+.cart-amount {
+  font-weight: bold;
+}
+
+/* Secondary Navigation */
+.secondary-nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #b22222;
+  color: white;
+  padding: 0 40px;
+}
+
+.nav-item {
+  padding: 15px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Main Content */
+.business-info-main-content {
+  display: flex;
+  padding: 40px;
+  background-color: #f9f9f9;
+  min-height: calc(100vh - 120px);
+}
+
+/* Left Side - Car Image */
+.car-image-container {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 500px;
+  overflow: hidden;
+  border-left: 10px solid #ff3333;
+  border-right: 10px solid #000;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right Side - Business Information Form */
+.business-info-form {
+  flex: 0 0 60%;
+  padding: 0 20px;
+}
+
+/* Progress Indicators */
+.progress-indicators {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.progress-indicators::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.indicator-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.indicator.completed .indicator-circle {
+  background-color: #4CAF50;
+}
+
+.indicator.active .indicator-circle {
+  background-color: #ff3333;
+}
+
+.indicator-label {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+}
+
+.indicator.active .indicator-label {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Form Heading */
+.form-heading {
+  margin-bottom: 30px;
+}
+
+.form-heading h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-heading p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Form Fields */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Logo Upload */
+.logo-upload {
+  display: flex;
+  gap: 20px;
+}
+
+.logo-preview {
+  width: 60px;
+  height: 60px;
+  border: 1px dashed #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-preview img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.upload-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-label {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-info {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Navigation Buttons */
+.form-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.previous-btn,
+.next-btn {
+  padding: 12px 40px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.previous-btn {
+  background-color: #ff3333;
+  color: white;
+}
+
+.next-btn {
+  background-color: #ff3333;
+  color: white;
+}
+
+/* Enhanced Responsive Adjustments */
+@media (max-width: 1024px) {
   .business-info-main-content {
-    display: flex;
-    padding: 40px;
-    background-color: #f9f9f9;
-    min-height: calc(100vh - 120px);
+      flex-direction: column;
+      padding: 20px;
   }
   
-  /* Left Side - Car Image */
+  .car-image-container,
+  .business-info-form {
+      flex: 0 0 100%;
+  }
+  
   .car-image-container {
-    flex: 0 0 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      margin-bottom: 40px;
   }
   
   .car-image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 450px;
-    height: 500px;
-    overflow: hidden;
-    border-left: 10px solid #ff3333;
-    border-right: 10px solid #000;
+      max-width: 100%;
+      height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      padding: 15px;
   }
   
-  .car-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .main-nav {
+      margin: 15px 0;
+      width: 100%;
   }
   
-  /* Right Side - Business Information Form */
-  .business-info-form {
-    flex: 0 0 60%;
-    padding: 0 20px;
+  .main-nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
   }
   
-  /* Progress Indicators */
+  .main-nav li {
+      margin: 5px 10px;
+  }
+  
+  .user-actions {
+      width: 100%;
+      justify-content: center;
+      margin-top: 10px;
+  }
+  
+  .secondary-nav {
+      flex-direction: column;
+      padding: 0;
+  }
+  
+  .nav-item {
+      text-align: center;
+      padding: 10px;
+  }
+  
+  .business-info-main-content {
+      padding: 15px;
+  }
+  
   .progress-indicators {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    position: relative;
+      flex-wrap: wrap;
+      gap: 15px;
   }
   
   .progress-indicators::before {
-    content: "";
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    height: 2px;
-    background-color: #e0e0e0;
-    z-index: 1;
+      display: none;
   }
   
   .indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
+      flex: 0 0 48%;
+      margin-bottom: 10px;
   }
   
-  .indicator-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    margin-bottom: 10px;
+  .car-image-wrapper {
+      height: 300px;
   }
   
-  .indicator.completed .indicator-circle {
-    background-color: #4CAF50;
-  }
-  
-  .indicator.active .indicator-circle {
-    background-color: #ff3333;
-  }
-  
-  .indicator-label {
-    font-size: 12px;
-    color: #777;
-    text-align: center;
-  }
-  
-  .indicator.active .indicator-label {
-    color: #333;
-    font-weight: bold;
-  }
-  
-  /* Form Heading */
-  .form-heading {
-    margin-bottom: 30px;
+  .business-info-form {
+      padding: 0;
   }
   
   .form-heading h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 5px;
+      font-size: 20px;
   }
   
-  .form-heading p {
-    font-size: 14px;
-    color: #777;
+  .form-nav-buttons {
+      flex-direction: column;
+      gap: 15px;
   }
   
-  /* Form Fields */
-  .form-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .previous-btn, 
+  .next-btn {
+      width: 100%;
+      text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+      padding: 10px;
   }
   
-  .form-group {
-    display: flex;
-    flex-direction: column;
+  .logo {
+      height: 30px;
+  }
+  
+  .progress-indicators {
+      margin-bottom: 20px;
+  }
+  
+  .indicator {
+      flex: 0 0 100%;
+  }
+  
+  .indicator-circle {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+  }
+  
+  .indicator-label {
+      font-size: 10px;
+  }
+  
+  .logo-upload {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .logo-preview {
+      margin-bottom: 10px;
   }
   
   .form-group label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+      font-size: 12px;
   }
   
   .form-group input,
   .form-group select,
   .form-group textarea {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+      font-size: 12px;
   }
   
-  .form-group textarea {
-    min-height: 100px;
-    resize: vertical;
-  }
-  
-  /* Logo Upload */
-  .logo-upload {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .logo-preview {
-    width: 60px;
-    height: 60px;
-    border: 1px dashed #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo-preview img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  
-  .upload-button {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .upload-label {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 5px;
-  }
-  
-  .file-input {
-    display: none;
-  }
-  
-  .file-info {
-    font-size: 12px;
-    color: #777;
-  }
-  
-  /* Navigation Buttons */
-  .form-nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
+  .car-image-wrapper {
+      height: 200px;
+      border-left: 5px solid #ff3333;
+      border-right: 5px solid #000;
   }
   
   .previous-btn,
   .next-btn {
-    padding: 12px 40px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 14px;
+      padding: 10px 20px;
+      font-size: 12px;
   }
-  
-  .previous-btn {
-    background-color: #ff3333;
-    color: white;
-  }
-  
-  .next-btn {
-    background-color: #ff3333;
-    color: white;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 1024px) {
-    .main-content {
-      flex-direction: column;
-    }
-    
-    .car-image-container,
-    .business-info-form {
-      flex: 0 0 100%;
-    }
-    
-    .car-image-container {
-      margin-bottom: 40px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      padding: 15px;
-    }
-    
-    .main-nav {
-      margin: 15px 0;
-    }
-    
-    .secondary-nav {
-      flex-direction: column;
-      padding: 0;
-    }
-    
-    .nav-item {
-      text-align: center;
-    }
-    
-    .progress-indicators {
-      flex-wrap: wrap;
-    }
-    
-    .indicator {
-      flex: 0 0 50%;
-      margin-bottom: 20px;
-    }
-  }
+}

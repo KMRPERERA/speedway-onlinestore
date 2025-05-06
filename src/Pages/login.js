@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import NavbarComponent from "../Components/navbar.js"; // Adjust the import path as necessary
 import "./login.css"; // Import your CSS file for styling
+import config from "../environment/config.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +26,7 @@ const LoginPage = () => {
       
       // Make API call to your authentication endpoint
       const response = await fetch(
-        `https://onlinestorebackend20250502182239.azurewebsites.net/api/UserAuthentication/login?p_email=${encodeURIComponent(email)}&p_password=${encodeURIComponent(password)}&p_account_type=${accountTypeFormatted}`,
+        `${config.apiUrl}/api/UserAuthentication/login?p_email=${encodeURIComponent(email)}&p_password=${encodeURIComponent(password)}&p_account_type=${accountTypeFormatted}`,
         {
           method: 'GET',
           headers: {

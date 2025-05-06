@@ -1,17 +1,16 @@
 
-
 import React, { useState, useEffect } from 'react';
-import './suplier-profile.css'; // Assuming you have a CSS file for styling
+import './suplier-profile.css'; // Assuming you have a CSS file for styling 
 import SupplierNavbarComponent from '../Components/supplier-navbar'; // Adjust the import path as necessary
-// Note: You'll need to add back the CSS import and navbar component in your actual implementation
+import config from '../environment/config';
 
 function SupplierDashboard() {
   const [activeTab, setActiveTab] = useState('orders');
   const [currentUser, setCurrentUser] = useState(null);
   const [profileData, setProfileData] = useState(null);
+  const [orderData, setOrderData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [orderData, setOrderData] = useState([]);
 
   useEffect(() => {
     // Get user data from localStorage on component mount
@@ -21,8 +20,9 @@ function SupplierDashboard() {
         const parsedUser = JSON.parse(userData);
         setCurrentUser(parsedUser);
         
-        // After setting current user, fetch profile data
+        // After setting current user, fetch both profile and order data
         fetchProfileData(parsedUser.email);
+        fetchOrderData(parsedUser.email);
       } catch (error) {
         console.error("Error parsing user data:", error);
         setError("Error loading user data");
@@ -37,7 +37,7 @@ function SupplierDashboard() {
   const fetchProfileData = async (email) => {
     try {
       const response = await fetch(
-        `https://onlinestorebackend20250502182239.azurewebsites.net/api/UserAuthentication/supplier?business_email=${encodeURIComponent(email)}`,
+        `${config.apiUrl}/api/UserAuthentication/supplier?business_email=${encodeURIComponent(email)}`,
         {
           method: 'GET',
           headers: {
@@ -54,28 +54,39 @@ function SupplierDashboard() {
       
       if (data && data.length > 0) {
         setProfileData(data[0]);
-        
-        // Set the order data if available in the response
-        if (data[0].orderNumber !== undefined) {
-          setOrderData([{
-            orderNumber: data[0].orderNumber,
-            phoneNumber: data[0].phoneNumber,
-            orderQty: data[0].orderQty,
-            deliverDate: data[0].deliverDate,
-            isShipped: data[0].isShipped,
-            isDelivered: data[0].isDelivered,
-            supplierEmail: data[0].supplierEmail,
-            customerName: data[0].customerName,
-            productID: data[0].productID,
-            productName: data[0].productName
-          }]);
-        }
       } else {
         setError("No profile data found");
       }
     } catch (error) {
       console.error("Error fetching profile data:", error);
       setError("Error fetching profile data");
+    }
+  };
+
+  const fetchOrderData = async (email) => {
+    try {
+      const response = await fetch(
+        `${config.apiUrl}/api/MoterpartApi/getorders?SupplierEmail=${encodeURIComponent(email)}`,
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+          // Add a timeout to prevent hanging requests
+          signal: AbortSignal.timeout(10000), // 10 seconds timeout
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error fetching orders: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setOrderData(data);
+    } catch (error) {
+      console.error("Error fetching order data:", error);
+      // We won't set the main error state here to allow the profile to still load
+      // even if orders fail to load
     } finally {
       setLoading(false);
     }
@@ -93,6 +104,13 @@ function SupplierDashboard() {
     if (isDelivered) return "Delivered";
     if (isShipped) return "Shipped";
     return "Processing";
+  };
+
+  // Function to format date
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
   };
 
   if (loading) return <div className="loading-spinner">Loading...</div>;
@@ -215,29 +233,30 @@ function SupplierDashboard() {
                     <th>ORDER ID</th>
                     <th>DATE</th>
                     <th>CUSTOMER</th>
-                    <th>PRODUCT</th>
+                    <th>PRODUCT ID</th>
                     <th>QUANTITY</th>
                     <th>TOTAL</th>
                     <th>STATUS</th>
                   </tr>
                 </thead>
                 <tbody>
-                {orderData.map((order, index) => (
-                  <tr key={index}>
-                    <td className="order-id">ORD-{order.orderNumber}</td>
-                    <td>{order.deliverDate ? new Date(order.deliverDate).toISOString().split('T')[0] : 'N/A'}</td>
-                    <td>{order.customerName || 'N/A'}</td>
-                    <td>{order.productName || 'N/A'}</td>
-                    <td>{order.orderQty}</td>
-                    <td>$0.00</td>
-                    <td>
-                      <span className={getStatusBadgeClass(order.isDelivered, order.isShipped)}>
-                        {getStatusText(order.isDelivered, order.isShipped)}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-                {orderData.length === 0 && (
+                {orderData && orderData.length > 0 ? (
+                  orderData.map((order, index) => (
+                    <tr key={index}>
+                      <td className="order-id">ORD-{order.orderNumber}</td>
+                      <td>{formatDate(order.deliverDate)}</td>
+                      <td>{order.customerName || 'N/A'}</td>
+                      <td>{order.productID || 'N/A'}</td>
+                      <td>{order.orderQty}</td>
+                      <td>Rs.{order.orderPrice ? order.orderPrice.toLocaleString() : '0.00'}</td>
+                      <td>
+                        <span className={getStatusBadgeClass(order.isDelivered, order.isShipped)}>
+                          {getStatusText(order.isDelivered, order.isShipped)}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
                   <tr>
                     <td colSpan="7" style={{ textAlign: 'center' }}>No orders available</td>
                   </tr>
@@ -260,7 +279,6 @@ function SupplierDashboard() {
 }
 
 export default SupplierDashboard;
-
 
 
 

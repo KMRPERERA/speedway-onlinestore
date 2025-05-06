@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import './shoppingcart.css'; // Adjust the path to your CSS file  
 import NavbarComponent from "../Components/navbar.js"; // Adjust the import path as necessary
 import { Link } from 'react-router-dom'; // Import Link for navigation
+import config from "../environment/config.js"; // Adjust the import path as necessary
 
 const Shoppingcart = () => {
   const [products, setProducts] = useState([]);
@@ -60,7 +61,7 @@ const Shoppingcart = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/getitems');
+        const response = await fetch(`${config.apiUrl}/api/MoterpartApi/getitems`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

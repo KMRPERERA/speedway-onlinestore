@@ -245,16 +245,16 @@ namespace OnlineStoreBackend.Models.DB
                                     created_at = supplier.created_at,
 
                                     // Add order information
-                                    OrderNumber = reader.GetInt32(reader.GetOrdinal("OrderNumber")),
-                                    PhoneNumber = reader["PhoneNumber"].ToString(),
-                                    OrderQty = reader.GetInt32(reader.GetOrdinal("OrderQty")),
-                                    DeliverDate = reader.IsDBNull(reader.GetOrdinal("DeliverDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("DeliverDate")),
-                                    IsShipped = reader.GetBoolean(reader.GetOrdinal("IsShipped")),
-                                    IsDelivered = reader.GetBoolean(reader.GetOrdinal("IsDelivered")),
-                                    SupplierEmail = reader["SupplierEmail"].ToString(),
-                                    CustomerName = reader["CustomerName"].ToString(),
-                                    ProductID = reader.GetInt32(reader.GetOrdinal("ProductID")),
-                                    ProductName = reader["ProductName"].ToString()
+                                    //OrderNumber = reader.GetInt32(reader.GetOrdinal("OrderNumber")),
+                                    //PhoneNumber = reader["PhoneNumber"].ToString(),
+                                    //OrderQty = reader.GetInt32(reader.GetOrdinal("OrderQty")),
+                                    //DeliverDate = reader.IsDBNull(reader.GetOrdinal("DeliverDate")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("DeliverDate")),
+                                    //IsShipped = reader.GetBoolean(reader.GetOrdinal("IsShipped")),
+                                    //IsDelivered = reader.GetBoolean(reader.GetOrdinal("IsDelivered")),
+                                    //SupplierEmail = reader["SupplierEmail"].ToString(),
+                                    //CustomerName = reader["CustomerName"].ToString(),
+                                    //ProductID = reader.GetInt32(reader.GetOrdinal("ProductID")),
+                                    //ProductName = reader["ProductName"].ToString()
                                 };
 
                                 supplierDetails.Add(orderDetail);

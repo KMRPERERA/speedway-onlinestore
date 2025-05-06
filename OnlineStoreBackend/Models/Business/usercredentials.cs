@@ -76,6 +76,20 @@
         public DateTime created_at { get; set; }
 
         // Order properties
+        //public int OrderNumber { get; set; }
+        //public string PhoneNumber { get; set; }
+        //public int OrderQty { get; set; }
+        //public DateTime DeliverDate { get; set; }
+        //public bool IsShipped { get; set; }
+        //public bool IsDelivered { get; set; }
+        //public string SupplierEmail { get; set; }
+        //public string CustomerName { get; set; }
+        //public int ProductID { get; set; }
+        //public string ProductName { get; set; }
+    }
+
+    public class OrderDetails
+    {
         public int OrderNumber { get; set; }
         public string PhoneNumber { get; set; }
         public int OrderQty { get; set; }
@@ -84,8 +98,31 @@
         public bool IsDelivered { get; set; }
         public string SupplierEmail { get; set; }
         public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public decimal OrderPrice { get; set; }
+        public string CustomerAddress { get; set; }
         public int ProductID { get; set; }
-        public string ProductName { get; set; }
+
+    }
+
+
+    public class NEWOrderDetails
+    {
+        public int OrderNumber { get; set; }
+        public string PhoneNumber { get; set; }
+        public int OrderQty { get; set; }
+        public DateTime DeliverDate { get; set; }
+        public bool IsShipped { get; set; }
+        public bool IsDelivered { get; set; }
+        public string SupplierEmail { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
+        public decimal OrderPrice { get; set; }
+        public string CustomerAddress { get; set; }
+        public int ProductID { get; set; }
+
+        public string ImageURL { get; set; }
+
     }
 }
 

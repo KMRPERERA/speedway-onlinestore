@@ -25,6 +25,7 @@ import Submitad from './Pages/submitad';
 import Neworders from './Pages/neworders';
 import Customerprofile from './Pages/customerprofile';
 import Procesingdetails from './Pages/procesingdetails';
+import Checkoutpage from './Pages/checkoutpage';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/fogotpassword" element={<Fogotpassword/>} />
         <Route path="/neworders" element={<Neworders/>} />
         <Route path="/trakingpage" element={<Trakingpage/>} />
+        <Route path="/checkoutpage" element={<Checkoutpage/>} />
         <Route path="/orderhistory" element={<Orderhistory/>} />
         <Route path="/contactinfo" element={<ContactInfo/>} />
         <Route path="/trackorder" element={<Trackorder/>} />

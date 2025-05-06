@@ -1,184 +1,305 @@
 
-    .orderManagementContainer {
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    
-    .purchaseCard {
-      background-color: white;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      border: 1px solid #eaeaea;
-    }
-    
-    .purchaseIdentifier {
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0;
-      color: #222;
-    }
-    
-    .clientName {
-      color: #666;
-      margin: 4px 0 12px;
-      font-size: 16px;
-    }
-    
-    .timeStampWrapper, .locationWrapper {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-      color: #666;
-      font-size: 14px;
-    }
-    
-    .iconClock, .iconLocation {
-      margin-right: 8px;
-      color: #888;
-    }
-    
-    .productTable {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    
-    .productTableHeader {
-      text-align: left;
-      padding: 12px 8px;
-      border-bottom: 1px solid #eee;
-      color: #888;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    
-    .productItem {
-      border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .productDetails {
-      display: flex;
-      align-items: center;
-      padding: 16px 8px;
-    }
-    
-    .productImageContainer {
-      width: 60px;
-      height: 60px;
-      background-color: #f5f5f5;
-      margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 4px;
-    }
-    
-    .productName {
-      font-weight: 500;
-      color: #333;
-    }
-    
-    .productCell {
-      padding: 16px 8px;
-      color: #333;
-    }
-    
-    .priceCell {
-      color: #333;
-    }
-    
-    .totalSection {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-top: 1px solid #eee;
-    }
-    
-    .finalCost {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-    }
-    
-    .amountValue {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-    }
-    
-    .actionContainer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    
-    .processBtn {
-      background-color: white;
-      border: 1px solid #d9d9d9;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: #555;
-    }
-    
-    .shipBtn {
-      background-color: #1a202c;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-    }
-    
-    .actionIcon {
-      margin-right: 8px;
-    }
-    
-    .statusBadge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-left: 12px;
-    }
-    
-    .highUrgency {
-      background-color: #fae9e9;
-      color: #b43c3c;
-    }
-    
-    .mediumUrgency {
-      background-color: #fff9e6;
-      color: #a17c22;
-    }
-    
-    .freshOrder {
-      background-color: #1a202c;
-      color: white;
-    }
-    
-    .headerContainer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .badgeContainer {
-      display: flex;
-      gap: 8px;
-    }
+/* Order Management CSS */
+.orderManagementContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.purchaseCard {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.purchaseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.purchaseIdentifier {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a202c;
+}
+
+.clientName {
+  color: #4a5568;
+  margin: 4px 0 0;
+  font-size: 1rem;
+}
+
+.badgeContainer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.freshOrder {
+  background-color: #1a202c;
+  color: white;
+}
+
+.highUrgency {
+  background-color: #fae9e9;
+  color: #b43c3c;
+}
+
+.mediumUrgency {
+  background-color: #fff9e6;
+  color: #a17c22;
+}
+
+.timeStampWrapper, .locationWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #4a5568;
+  font-size: 0.875rem;
+}
+
+.iconClock, .iconLocation {
+  margin-right: 10px;
+  color: #718096;
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.productTableHeader {
+  text-align: left;
+  padding: 12px 12px;
+  border-bottom: 2px solid #edf2f7;
+  color: #718096;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.productItem {
+  border-bottom: 1px solid #edf2f7;
+  transition: background-color 0.2s;
+}
+
+.productItem:hover {
+  background-color: #f7fafc;
+}
+
+.productDetails {
+  display: flex;
+  align-items: center;
+  padding: 16px 12px;
+}
+
+.productImageContainer {
+  width: 60px;
+  height: 60px;
+  background-color: #f7fafc;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #edf2f7;
+}
+
+.productImageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.productName {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.productCell {
+  padding: 16px 12px;
+  color: #2d3748;
+  font-size: 0.9375rem;
+}
+
+.priceCell {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid #edf2f7;
+  margin-top: 8px;
+}
+
+.finalCost {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.amountValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.actionContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.processBtn, .shipBtn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.processBtn {
+  background-color: white;
+  border: 1px solid #cbd5e0;
+  color: #4a5568;
+}
+
+.processBtn:hover {
+  background-color: #f7fafc;
+  border-color: #a0aec0;
+}
+
+.shipBtn {
+  background-color: #1a202c;
+  color: white;
+  border: none;
+}
+
+.shipBtn:hover {
+  background-color: #2d3748;
+}
+
+.actionIcon {
+  margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .orderManagementContainer {
+    padding: 16px;
+  }
+  
+  .purchaseCard {
+    padding: 20px 16px;
+  }
+  
+  .headerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .badgeContainer {
+    margin-top: 10px;
+  }
+
+  .productTable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .productDetails {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .productImageContainer {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+  
+  .actionContainer {
+    justify-content: center;
+    margin-top: 24px;
+  }
+  
+  .processBtn, .shipBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .purchaseCard {
+    padding: 16px 12px;
+  }
+  
+  .statusBadge {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  
+  .productTableHeader {
+    padding: 10px 8px;
+    font-size: 0.7rem;
+  }
+  
+  .productCell {
+    padding: 12px 8px;
+    font-size: 0.875rem;
+  }
+  
+  .finalCost, .amountValue {
+    font-size: 0.9375rem;
+  }
+  
+  .totalSection {
+    padding: 16px 0;
+  }
+  
+  .actionContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

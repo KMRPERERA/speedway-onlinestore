@@ -1,8 +1,10 @@
 
 
+
 import React, { useState, useEffect } from 'react'
 import NavbarComponent from '../Components/navbar'
 import './orderpage.css'; // Assuming you have a CSS file for styling
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 export default function Orderpage() {
   const [cartItems, setCartItems] = useState([]);
@@ -10,6 +12,7 @@ export default function Orderpage() {
   const [subTotal, setSubTotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+   const navigate = useNavigate();
   
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -87,6 +90,29 @@ export default function Orderpage() {
     const newQuantities = { ...quantities };
     delete newQuantities[productID];
     setQuantities(newQuantities);
+  };
+  
+  // Handle checkout and save details to localStorage
+  const handleCheckout = () => {
+    // Create checkout details object with all necessary information
+    const checkoutDetails = {
+      items: cartItems.map(item => ({
+        ...item,
+        quantity: quantities[item.productID] || 1,
+        itemTotal: item.price * (quantities[item.productID] || 1)
+      })),
+      subTotal: subTotal,
+      tax: tax,
+      total: total,
+      timestamp: new Date().toISOString()
+    };
+    
+    // Save to localStorage
+    localStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails));
+    
+    // You can add navigation to checkout page here if needed
+    // history.push('/checkout'); // Uncomment if using react-router
+    navigate('/checkoutpage'); // Assuming you have a Navigate function or useHistory hook
   };
   
   return (
@@ -183,6 +209,7 @@ export default function Orderpage() {
               <button 
                 className="checkoutBtn"
                 disabled={cartItems.length === 0}
+                onClick={handleCheckout}
               >
                 Checkout
               </button>

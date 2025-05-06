@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import './registration.css';
 import NavbarComponent from '../Components/navbar.js';
 import { Link, useNavigate } from 'react-router-dom';
+import config from '../environment/config.js';
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Registration = () => {
 
     try {
       // Construct the API URL with query parameters
-      const apiUrl = `https://onlinestorebackend20250502182239.azurewebsites.net/api/UserAuthentication/customers?p_customer_name=${encodeURIComponent(formData.name)}&p_customer_password=${encodeURIComponent(formData.password)}&p_customer_email=${encodeURIComponent(formData.email)}&p_customer_phone=${encodeURIComponent(formData.mobile)}`;
+      const apiUrl = `${config.apiUrl}/api/UserAuthentication/customers?p_customer_name=${encodeURIComponent(formData.name)}&p_customer_password=${encodeURIComponent(formData.password)}&p_customer_email=${encodeURIComponent(formData.email)}&p_customer_phone=${encodeURIComponent(formData.mobile)}`;
       
       const response = await fetch(apiUrl, {
         method: 'POST',

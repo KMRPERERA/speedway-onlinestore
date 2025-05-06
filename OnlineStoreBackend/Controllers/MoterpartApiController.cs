@@ -33,5 +33,52 @@ namespace OnlineStoreBackend.Controllers
         }
 
 
+        [HttpPost("addorder")]
+        public ActionResult<IEnumerable<orderitems>> Addorder(int ProductID,string CustomerEmail,string CustomerAddress,decimal OrderPrice,string CustomerName,int OrderQty,string PhoneNumber)
+        {
+            var items = _moterpartdata.addorderItems(ProductID, CustomerEmail, CustomerAddress, OrderPrice, CustomerName, OrderQty, PhoneNumber); // Fixed syntax error
+            return Ok(items);
+        }
+
+
+        [HttpGet("getorders")]
+        public ActionResult<IEnumerable<OrderDetails>> Getorder(string SupplierEmail)
+        {
+            var items = _moterpartdata.Getorder(SupplierEmail); // Fixed syntax error
+            return Ok(items);
+        }
+
+        [HttpGet("trackorder")]
+        public ActionResult<IEnumerable<OrderDetails>>Trackorder(int OrderNumber, string PhoneNumber)
+        {
+            var items = _moterpartdata.Trackorder(OrderNumber, PhoneNumber); // Fixed syntax error
+            return Ok(items);
+        }
+
+
+        [HttpGet("getneworders")]
+        public ActionResult<IEnumerable<NEWOrderDetails>> GetNeworder(string SupplierEmail)
+        {
+            var items = _moterpartdata.GetNeworder(SupplierEmail); // Fixed syntax error
+            return Ok(items);
+        }
+
+
+        [HttpPost("adddeliverystatus")]
+        public ActionResult<IEnumerable<OrderDetails>> Adddeliverystatus(int OrderNumber,bool IsShipped,bool IsDelivered)
+        {
+            var items = _moterpartdata.Adddeliverystatus(OrderNumber, IsShipped, IsDelivered); // Fixed syntax error
+            return Ok(items);
+        }
+
+
+        [HttpGet("getdeliveredorders")]
+        public ActionResult<IEnumerable<NEWOrderDetails>> GetDeliveredorder(string CustomerEmail)
+        {
+            var items = _moterpartdata.GetDeliveredorder(CustomerEmail); // Fixed syntax error
+            return Ok(items);
+        }
+
+
     }
 }

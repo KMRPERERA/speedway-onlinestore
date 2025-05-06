@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import './submitad.css'; 
-import SupplierNavbarComponent from '../Components/supplier-navbar'; 
+import SupplierNavbarComponent from '../Components/supplier-navbar';
+import config from '../environment/config'; 
 
 
 export default function SubmitAd() {
@@ -54,7 +55,7 @@ export default function SubmitAd() {
   const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
 
   // API endpoint
-  const apiEndpoint = "https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/additems";
+  const apiEndpoint = `${config.apiUrl}/api/MoterpartApi/additems`;
 
   // Handle category change
   const handleCategoryChange = (e) => {

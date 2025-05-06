@@ -1,6 +1,6 @@
 ﻿namespace OnlineStoreBackend.Models.Business
 {
- 
+
     public class Moterparts
     {
         public int ProductID { get; set; }
@@ -13,5 +13,10 @@
         public string ImageURL { get; set; }
         public int StockQty { get; set; }
         public string SupplierEmail { get; set; }
+    }
+
+    public class orderitems
+    {
+        public decimal OrderNumber { get; set; }
     }
 }
