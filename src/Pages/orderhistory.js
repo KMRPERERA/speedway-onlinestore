@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './orderhistory.css';
 import NavbarComponent from '../Components/navbar';
-import config from '../environment/config';
 
 export default function Orderhistory() {
   const [orders, setOrders] = useState([]);
@@ -28,7 +27,7 @@ export default function Orderhistory() {
     // Fetch order history data from API
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`${config.apiUrl}/api/MoterpartApi/getdeliveredorders?CustomerEmail=${encodeURIComponent(userEmail)}`);
+        const response = await fetch(`https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/getdeliveredorders?CustomerEmail=${encodeURIComponent(userEmail)}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch orders');

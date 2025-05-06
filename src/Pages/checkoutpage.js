@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import './checkoutpage.css'
 import NavbarComponent from "../Components/navbar.js"; // Adjust the import path as necessary
-import config from '../environment/config.js';
 import { useNavigate } from 'react-router-dom'; // Import for redirection
 
 export default function Checkoutpage() {
@@ -100,7 +99,7 @@ export default function Checkoutpage() {
     
     try {
       // Make API call using fetch
-      const url = `${config.apiUrl}/api/MoterpartApi/addorder?ProductID=${firstItem.productID || 5}&CustomerEmail=${encodeURIComponent(formData.emailAddress)}&CustomerAddress=${encodeURIComponent(fullAddress)}&OrderPrice=${checkoutDetails.total}&CustomerName=${encodeURIComponent(fullName)}&OrderQty=${firstItem.quantity || 1}&PhoneNumber=${encodeURIComponent(formData.phoneNumber)}`;
+      const url = `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/addorder?ProductID=${firstItem.productID || 5}&CustomerEmail=${encodeURIComponent(formData.emailAddress)}&CustomerAddress=${encodeURIComponent(fullAddress)}&OrderPrice=${checkoutDetails.total}&CustomerName=${encodeURIComponent(fullName)}&OrderQty=${firstItem.quantity || 1}&PhoneNumber=${encodeURIComponent(formData.phoneNumber)}`;
       
       const response = await fetch(url, {
         method: 'POST',

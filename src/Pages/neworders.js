@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './neworders.css'; // Adjust the path to your CSS file
 import SupplierNavbarComponent from '../Components/supplier-navbar';
-import config from '../environment/config';
 
 export default function Neworders() {
   const [orders, setOrders] = useState([]);
@@ -22,7 +21,7 @@ export default function Neworders() {
         const user = JSON.parse(userData);
         const supplierEmail = encodeURIComponent(user.email);
         
-        const response = await fetch(`${config.apiUrl}/api/MoterpartApi/getneworders?SupplierEmail=${supplierEmail}`);
+        const response = await fetch(`https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/getneworders?SupplierEmail=${supplierEmail}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -45,7 +44,7 @@ export default function Neworders() {
   const handleMarkAsShipped = async (orderNumber) => {
     try {
       const response = await fetch(
-        `https://localhost:7037/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=false`,
+        `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=false`,
         {
           method: 'POST',
           headers: {
@@ -76,7 +75,7 @@ export default function Neworders() {
   const handleMarkAsDelivered = async (orderNumber) => {
     try {
       const response = await fetch(
-        `https://localhost:7037/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=true`,
+        `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/adddeliverystatus?OrderNumber=${orderNumber}&IsShipped=true&IsDelivered=true`,
         {
           method: 'POST',
           headers: {

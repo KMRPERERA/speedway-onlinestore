@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import './locationdetails.css';
 import NavbarComponent from "../Components/navbar.js";
 import { Link, useNavigate } from 'react-router-dom';
-import config from '../environment/config.js';
 
 const LocationDetails = () => {
   const navigate = useNavigate();
@@ -217,7 +216,7 @@ const LocationDetails = () => {
       localStorage.setItem('locationDetails', JSON.stringify(locationDetails));
       
       // Make the API request
-      const response = await fetch(`${config.apiUrl}/api/UserAuthentication/suppliers`, {
+      const response = await fetch(`https://onlinestorebackend20250502182239.azurewebsites.net/api/UserAuthentication/suppliers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

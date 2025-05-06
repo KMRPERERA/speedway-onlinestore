@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import './suplier-profile.css'; // Assuming you have a CSS file for styling 
 import SupplierNavbarComponent from '../Components/supplier-navbar'; // Adjust the import path as necessary
-import config from '../environment/config';
 
 function SupplierDashboard() {
   const [activeTab, setActiveTab] = useState('orders');
@@ -37,7 +36,7 @@ function SupplierDashboard() {
   const fetchProfileData = async (email) => {
     try {
       const response = await fetch(
-        `${config.apiUrl}/api/UserAuthentication/supplier?business_email=${encodeURIComponent(email)}`,
+        `https://onlinestorebackend20250502182239.azurewebsites.net/api/UserAuthentication/supplier?business_email=${encodeURIComponent(email)}`,
         {
           method: 'GET',
           headers: {
@@ -66,7 +65,7 @@ function SupplierDashboard() {
   const fetchOrderData = async (email) => {
     try {
       const response = await fetch(
-        `${config.apiUrl}/api/MoterpartApi/getorders?SupplierEmail=${encodeURIComponent(email)}`,
+        `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/getorders?SupplierEmail=${encodeURIComponent(email)}`,
         {
           method: 'GET',
           headers: {

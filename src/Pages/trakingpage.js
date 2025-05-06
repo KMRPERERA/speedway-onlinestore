@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import './trakingpage.css';
 import NavbarComponent from '../Components/navbar';
-import config from '../environment/config';
 
 export default function Trakingpage() {
   const [orderData, setOrderData] = useState(null);
@@ -22,7 +21,7 @@ export default function Trakingpage() {
 
         // Fetch data from API
         const response = await fetch(
-          `${config.apiUrl}/api/MoterpartApi/trackorder?OrderNumber=${orderNumber}&PhoneNumber=${phoneNumber}`
+          `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/trackorder?OrderNumber=${orderNumber}&PhoneNumber=${phoneNumber}`
         );
 
         if (!response.ok) {
