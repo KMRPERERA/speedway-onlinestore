@@ -42,6 +42,7 @@ export default function Checkoutpage() {
     const userData = localStorage.getItem('currentUser');
     if (!userData) {
       // Redirect to login page if no user found
+      alert("You must be logged in to checkout.");
       navigate('/login');
       return;
     }

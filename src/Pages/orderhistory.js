@@ -16,6 +16,7 @@ export default function Orderhistory() {
     
     if (!userData) {
       // If no user found in localStorage, redirect to login
+      alert("You need to log in to view your order history.");
       navigate('/login');
       return;
     }
