@@ -35,32 +35,30 @@ const BusinessCredentials = () => {
         const parsedCredentials = JSON.parse(savedCredentials);
         console.log("Loaded saved credentials:", parsedCredentials);
         
-        // Set any previously saved URLs
+        // Set any previously saved URLs (but not as previews)
         setBusinessCredentials(prev => ({
           ...prev,
           ...parsedCredentials
         }));
         
-        // Create previews for previously uploaded files
-        const newPreviews = {...filePreviews};
-        if (parsedCredentials.businessLicenseUrl) {
-          newPreviews.businessLicense = parsedCredentials.businessLicenseUrl;
-        }
-        if (parsedCredentials.taxRegistrationUrl) {
-          newPreviews.taxRegistration = parsedCredentials.taxRegistrationUrl;
-        }
-        if (parsedCredentials.tradeCertificatesUrl) {
-          newPreviews.tradeCertificates = parsedCredentials.tradeCertificatesUrl;
-        }
-        if (parsedCredentials.dealershipCertificatesUrl) {
-          newPreviews.dealershipCertificates = parsedCredentials.dealershipCertificatesUrl;
-        }
-        
-        setFilePreviews(newPreviews);
+        // We no longer set previews from localStorage data
+        // This is what was causing the previews to persist
       } catch (error) {
         console.error("Error parsing saved credentials:", error);
       }
     }
+
+    // Clear any existing previews when component mounts
+    setFilePreviews({
+      businessLicense: null,
+      taxRegistration: null,
+      tradeCertificates: null,
+      dealershipCertificates: null
+    });
+    
+    // Clear session storage when component mounts
+    sessionStorage.removeItem('tempFilePreviews');
+    
   }, []);
 
   const handleFileUpload = (name, file) => {
@@ -77,6 +75,11 @@ const BusinessCredentials = () => {
           ...prev,
           [name]: reader.result
         }));
+        
+        // Also save current file previews to session storage
+        // This helps for temporary persistence within a single session
+        const updatedPreviews = { ...filePreviews, [name]: reader.result };
+        sessionStorage.setItem('tempFilePreviews', JSON.stringify(updatedPreviews));
       };
       
       // If it's a PDF, we'll just show a PDF icon
@@ -85,6 +88,10 @@ const BusinessCredentials = () => {
           ...prev,
           [name]: 'pdf'
         }));
+        
+        // Update session storage for PDFs as well
+        const updatedPreviews = { ...filePreviews, [name]: 'pdf' };
+        sessionStorage.setItem('tempFilePreviews', JSON.stringify(updatedPreviews));
       } else {
         // For images, create a preview
         reader.readAsDataURL(file);
@@ -190,6 +197,9 @@ const BusinessCredentials = () => {
       const savedItem = localStorage.getItem('businessCredentials');
       console.log("Verification - Saved item:", savedItem);
       
+      // Clear any session storage for previews before navigating
+      sessionStorage.removeItem('tempFilePreviews');
+      
       // Navigate to the next page
       navigate('/locationdetails');
     } catch (error) {
@@ -203,14 +213,13 @@ const BusinessCredentials = () => {
   // Render file upload area with preview if available
   const renderFileUploadArea = (fileType) => {
     const preview = filePreviews[fileType];
-    const previewUrl = businessCredentials[`${fileType}Url`] || preview;
     
     return (
       <div className="file-upload-area">
-        {previewUrl ? (
+        {preview ? (
           <div className="file-preview">
             {/* If it's a PDF or PDF URL, show PDF icon */}
-            {preview === 'pdf' || previewUrl.includes('.pdf') ? (
+            {preview === 'pdf' ? (
               <div className="pdf-preview">
                 <span className="pdf-icon">PDF</span>
                 <span className="preview-filename">{businessCredentials[fileType]?.name || "Document Uploaded"}</span>
@@ -218,7 +227,7 @@ const BusinessCredentials = () => {
             ) : (
               /* For images, show the actual preview */
               <img 
-                src={previewUrl} 
+                src={preview} 
                 alt="File Preview" 
                 className="file-preview-image"
               />
