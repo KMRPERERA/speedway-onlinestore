@@ -124,6 +124,12 @@
         public string ImageURL { get; set; }
 
     }
+
+    public class  usercounts
+    {
+        public string Entity { get; set; }
+        public int Count { get; set; }
+    }
 }
 
 

@@ -271,5 +271,31 @@ namespace OnlineStoreBackend.Models.DB
             }
             return supplierDetails;
         }
+
+        public List<usercounts> GetCount()
+        {
+            List<usercounts> users = new List<usercounts>();
+            using (SqlConnection connection = new SqlConnection(_connectionString)) // Changed from MySqlConnection
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_CountSuppliersAndCustomers", connection)) // Changed from MySqlCommand
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader()) // Changed from MySqlDataReader
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new usercounts
+                            {
+                                Count = reader.GetInt32(reader.GetOrdinal("Count")), // SQL Server best practice
+                                Entity = reader.GetString(reader.GetOrdinal("Entity")),
+                            });
+                        }
+                    }
+                }
+            }
+            return users;
+        }
     }
 }
