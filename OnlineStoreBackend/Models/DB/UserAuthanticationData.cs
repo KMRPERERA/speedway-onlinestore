@@ -297,5 +297,34 @@ namespace OnlineStoreBackend.Models.DB
             }
             return users;
         }
+
+
+        public List<customerinfo> GetCustomerInfo(string CustomerEmail)
+        {
+            List<customerinfo> users = new List<customerinfo>();
+            using (SqlConnection connection = new SqlConnection(_connectionString)) // Changed from MySqlConnection
+            {
+                using (SqlCommand cmd = new SqlCommand("GetCustomerByEmail", connection)) // Changed from MySqlCommand
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CustomerEmail", CustomerEmail);
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader()) // Changed from MySqlDataReader
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new customerinfo
+                            {
+                                customer_id = reader.GetInt32(reader.GetOrdinal("customer_id")), // SQL Server best practice
+                                customer_name = reader.GetString(reader.GetOrdinal("customer_name")),
+                                customer_phone = reader.GetString(reader.GetOrdinal("customer_phone")),
+                                customer_email = reader.GetString(reader.GetOrdinal("customer_email")),
+                            });
+                        }
+                    }
+                }
+            }
+            return users;
+        }
     }
 }

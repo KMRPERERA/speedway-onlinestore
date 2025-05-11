@@ -86,5 +86,13 @@ namespace OnlineStoreBackend.Controllers
             var users = _userAuthentication.GetCount(); // Fixed syntax error
             return Ok(users);
         }
+
+
+        [HttpGet("getcustomerinfo")]
+        public ActionResult<IEnumerable<customerinfo>> GetCustomerInfo(string CustomerEmail)
+        {
+            var users = _userAuthentication.GetCustomerInfo(CustomerEmail); // Fixed syntax error
+            return Ok(users);
+        }
     }
 }
