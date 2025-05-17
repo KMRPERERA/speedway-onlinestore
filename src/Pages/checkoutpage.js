@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react'
 import './checkoutpage.css'
 import NavbarComponent from "../Components/navbar.js"; // Adjust the import path as necessary
@@ -35,6 +34,8 @@ export default function Checkoutpage() {
   // State for order confirmation popup
   const [showPopup, setShowPopup] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
+  const [orderNumbers, setOrderNumbers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   
   // Check for user in localStorage and set email when component mounts
   useEffect(() => {
@@ -78,16 +79,14 @@ export default function Checkoutpage() {
     }
   };
   
-  // Handle form submission
+  // Handle form submission - modified to process each item in cart
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Get the first item from cart (assuming we need to send the first product ID)
-    const firstItem = checkoutDetails.items && checkoutDetails.items.length > 0 
-      ? checkoutDetails.items[0] 
-      : null;
+    // Get all items from cart
+    const cartItems = checkoutDetails.items || [];
       
-    if (!firstItem) {
+    if (cartItems.length === 0) {
       alert("No items in your cart!");
       return;
     }
@@ -98,45 +97,77 @@ export default function Checkoutpage() {
     // Construct the full address
     const fullAddress = `${formData.streetAddress}, ${formData.apartmentInfo ? formData.apartmentInfo + ', ' : ''}${formData.city}, ${formData.state}, ${formData.zipCode}, ${formData.country}`;
     
+    // Set loading state
+    setIsLoading(true);
+    
     try {
-      // Make API call using fetch
-      const url = `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/addorder?ProductID=${firstItem.productID || 5}&CustomerEmail=${encodeURIComponent(formData.emailAddress)}&CustomerAddress=${encodeURIComponent(fullAddress)}&OrderPrice=${checkoutDetails.total}&CustomerName=${encodeURIComponent(fullName)}&OrderQty=${firstItem.quantity || 1}&PhoneNumber=${encodeURIComponent(formData.phoneNumber)}`;
+      // Array to store all order numbers
+      const allOrderNumbers = [];
       
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
+      // Process each item in the cart
+      for (const item of cartItems) {
+        // Make API call for each product in cart
+        const url = `https://onlinestorebackend20250502182239.azurewebsites.net/api/MoterpartApi/addorder?ProductID=${item.productID || 5}&CustomerEmail=${encodeURIComponent(formData.emailAddress)}&CustomerAddress=${encodeURIComponent(fullAddress)}&OrderPrice=${item.itemTotal || 0}&CustomerName=${encodeURIComponent(fullName)}&OrderQty=${item.quantity || 1}&PhoneNumber=${encodeURIComponent(formData.phoneNumber)}`;
+        
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status} for product ID: ${item.productID}`);
         }
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        
+        const data = await response.json();
+        
+        // Add order number to our collection
+        if (data && data[0] && data[0].orderNumber) {
+          allOrderNumbers.push({
+            orderNumber: data[0].orderNumber,
+            productName: item.partName,
+            quantity: item.quantity
+          });
+        }
       }
       
-      const data = await response.json();
-      
-      // Set the order number and show the popup
-      setOrderNumber(data[0].orderNumber);
-      setShowPopup(true);
-      
-      // Clear cart after successful order
-      localStorage.removeItem('checkoutDetails');
-      setCheckoutDetails({
-        items: [],
-        subTotal: 0,
-        tax: 0,
-        total: 0
-      });
+      // Set the order numbers and show the popup
+      if (allOrderNumbers.length > 0) {
+        // If there's only one order, use the old behavior
+        if (allOrderNumbers.length === 1) {
+          setOrderNumber(allOrderNumbers[0].orderNumber);
+        } else {
+          // Otherwise, store all order numbers
+          setOrderNumbers(allOrderNumbers);
+        }
+        
+        setShowPopup(true);
+        
+        // Clear cart after successful orders
+        localStorage.removeItem('checkoutDetails');
+        setCheckoutDetails({
+          items: [],
+          subTotal: 0,
+          tax: 0,
+          total: 0
+        });
+      } else {
+        throw new Error('No order numbers returned from API');
+      }
       
     } catch (error) {
       console.error('Error placing order:', error);
       alert('There was an error placing your order. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
   
   // Close the popup
   const closePopup = () => {
     setShowPopup(false);
+    navigate('/'); // Navigate to home page or product listing page
   };
    
   return (  
@@ -374,7 +405,13 @@ export default function Checkoutpage() {
                     <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" className="payment-logo-dione"/>
                   </div>
                   
-                  <button type="submit" className="submit-enceladus">PLACE ORDER</button>
+                  <button 
+                    type="submit" 
+                    className="submit-enceladus" 
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'PROCESSING...' : 'PLACE ORDER'}
+                  </button>
                 </div>
               </div>
               
@@ -393,7 +430,7 @@ export default function Checkoutpage() {
           </div>
         </div>
         
-        {/* Order Confirmation Popup */}
+        {/* Order Confirmation Popup - Updated to handle multiple orders */}
         {showPopup && (
           <div className="popup-overlay">
             <div className="popup-content">
@@ -404,9 +441,31 @@ export default function Checkoutpage() {
               <div className="popup-body">
                 <div className="success-icon">✓</div>
                 <p>Thank you for your order!</p>
-                <p>Your order reference number is:</p>
-                <h3 className="order-number">{orderNumber}</h3>
-                <p>Please save this number for tracking your order.</p>
+                
+                {/* For single item order */}
+                {orderNumber && (
+                  <>
+                    <p>Your order reference number is:</p>
+                    <h3 className="order-number">{orderNumber}</h3>
+                  </>
+                )}
+                
+                {/* For multiple item orders */}
+                {orderNumbers.length > 0 && (
+                  <>
+                    <p>Your order reference numbers are:</p>
+                    <div className="order-numbers-list">
+                      {orderNumbers.map((order, index) => (
+                        <div key={index} className="order-item">
+                          <p><strong>{order.productName}</strong> (Qty: {order.quantity})</p>
+                          <h3 className="order-number">{order.orderNumber}</h3>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                
+                <p>Please save these numbers for tracking your order.</p>
               </div>
               <div className="popup-footer">
                 <button className="continue-shopping-btn" onClick={closePopup}>Continue Shopping</button>
