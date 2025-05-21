@@ -203,9 +203,9 @@ export default function Neworders() {
                       </td>
                       <td className="productCell">{order.orderQty}</td>
                       <td className="productCell priceCell">
-                        ${order.orderQty > 0 ? (Number(order.orderPrice) / order.orderQty).toFixed(2) : '0.00'}
+                        Rs.{order.orderQty > 0 ? (Number(order.orderPrice) / order.orderQty).toFixed(2) : '0.00'}
                       </td>
-                      <td className="productCell priceCell">${Number(order.orderPrice).toFixed(2)}</td>
+                      <td className="productCell priceCell">Rs.{Number(order.orderPrice).toFixed(2)}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -213,7 +213,7 @@ export default function Neworders() {
 
               <div className="totalSection">
                 <span className="finalCost">Total Order Amount:</span>
-                <span className="amountValue">${Number(order.orderPrice).toFixed(2)}</span>
+                <span className="amountValue">Rs.{Number(order.orderPrice).toFixed(2)}</span>
               </div>
 
               <div className="actionContainer">

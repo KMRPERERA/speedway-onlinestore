@@ -70,9 +70,9 @@ const SupplierNavbarComponent = () => {
             <li className="nav-item">
               <Link to="/supcontact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/procesingdetails" className="nav-link" onClick={() => setMobileMenuOpen(false)}>PROCESSING DETAILS</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
         

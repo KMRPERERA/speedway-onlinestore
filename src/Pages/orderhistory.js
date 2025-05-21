@@ -82,7 +82,7 @@ export default function Orderhistory() {
                     <p className="order-quantity-info">
                       <span className="quantity-number">QUANTITY: {order.orderQty}</span>
                       <span className="vertical-separator">|</span>
-                      <span className="order-total-amount">TOTAL: ${order.orderPrice.toFixed(2)}</span>
+                      <span className="order-total-amount">TOTAL: Rs.{order.orderPrice.toFixed(2)}</span>
                     </p>
                     <p className="customer-info">
                       <span>SHIP TO: {order.customerName}, {order.customerAddress}</span>

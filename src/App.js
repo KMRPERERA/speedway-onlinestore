@@ -24,7 +24,7 @@ import ViewdetailsSection from './Pages/viewdetails';
 import Submitad from './Pages/submitad';
 import Neworders from './Pages/neworders';
 import Customerprofile from './Pages/customerprofile';
-import Procesingdetails from './Pages/procesingdetails';
+// import Procesingdetails from './Pages/procesingdetails';
 import Checkoutpage from './Pages/checkoutpage';
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
         <Route path="/businesscredentials" element={<Businesscredentials/>} />
         <Route path="/locationdetails" element={<Locationdetails/>} />
         <Route path="/customerprofile" element={<Customerprofile/>} />
-        <Route path="/procesingdetails" element={<Procesingdetails/>} />
+        {/* <Route path="/procesingdetails" element={<Procesingdetails/>} /> */}
       </Routes>
     </div>
   </Router>

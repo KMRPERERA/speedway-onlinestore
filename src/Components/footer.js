@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <p>© 2023 Speed Way | Privacy | Terms | Sitemap</p>
+          <p>© 2025 Speed Way | Privacy | Terms | Sitemap</p>
           <div className="social-icons">
             <a href="#" className="social-icon">𝕏</a>
             <a href="#" className="social-icon">f</a>
