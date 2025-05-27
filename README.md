@@ -37,8 +37,8 @@ SpeedWay is an online e-commerce platform for vehicle parts, offering a wide ran
 
 ---
 ### Testing
-- **Features tested: Sign up/ login,Submit Ad,Editing profile,Tracking item
-- 
+- **Features tested**: Sign up/ login,Submit Ad,Editing profile,Tracking item
+  
 ##  Project Structure 
 /Speedway-online-main -> React Frontend
 /components
@@ -64,12 +64,12 @@ Program.cs
   dotnet run
   
 ## Future Implementations
--Mobile App (React Native)
--AI-based product recommendations
--Multi-vendor support
--Vehicle compatibility checker
--Payment gateway (Stripe, PayPal, etc.)
--Advanced analytics dashboard
+-**Mobile App** (React Native)
+-**AI-based product** recommendations
+-**Multi-vendor support**
+-**Vehicle compatibility checker**
+-**Payment gateway** (Stripe, PayPal, etc.)
+-**Advanced analytics dashboard**
 
 ## Developed By
 Kaluthanthrige Perera
