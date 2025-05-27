@@ -40,28 +40,28 @@ SpeedWay is an online e-commerce platform for vehicle parts, offering a wide ran
 - **Features tested**: Sign up/ login,Submit Ad,Editing profile,Tracking item
   
 ##  Project Structure 
-/Speedway-online-main -> React Frontend
-/components
-/pages
-/environment
-App.js
+- /Speedway-online-main -> React Frontend
+- /components
+- /pages
+- /environment
+- App.js
 
-/OnloneStoreBackend -> .NET Backend
-/Controllers
-/Models
-/Properties
-Program.cs
+- /OnloneStoreBackend -> .NET Backend
+- /Controllers
+- /Models
+- /Properties
+- Program.cs
 
  ## Start Frontend (React)
-  cd speedway-onlinestore-main
+ - cd speedway-onlinestore-main
 - npm install
  -  npm i
    -  npm start
 
   ## Start Backend (.NET)
-  Open /server in Visual Studio
-  Run the project or use:
-  dotnet run
+  - Open /server in Visual Studio
+  - Run the project or use:
+  - dotnet run
   
 ## Future Implementations
 -**Mobile App** (React Native)
