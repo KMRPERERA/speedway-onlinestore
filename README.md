@@ -64,12 +64,12 @@ SpeedWay is an online e-commerce platform for vehicle parts, offering a wide ran
   - dotnet run
   
 ## Future Implementations
--**Mobile App** (React Native)
--**AI-based product** recommendations
--**Multi-vendor support**
--**Vehicle compatibility checker**
--**Payment gateway** (Stripe, PayPal, etc.)
--**Advanced analytics dashboard**
+- **Mobile App** (React Native)
+- **AI-based product** recommendations
+- **Multi-vendor support**
+- **Vehicle compatibility checker**
+- **Payment gateway** (Stripe, PayPal, etc.)
+- **Advanced analytics dashboard**
 
 ## Developed By
 Kaluthanthrige Perera
