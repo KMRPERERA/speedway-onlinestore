@@ -54,9 +54,9 @@ Program.cs
 
  ## Start Frontend (React)
   cd speedway-onlinestore-main
-  npm install
-  npm i
-  npm start
+- npm install
+ -  npm i
+   -  npm start
 
   ## Start Backend (.NET)
   Open /server in Visual Studio
